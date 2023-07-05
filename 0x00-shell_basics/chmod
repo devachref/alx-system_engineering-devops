@@ -3,6 +3,7 @@
 echo 'enter name file'
 read var
 touch ${var}
+echo '#!/bin/bash' > ${var}
 vi ${var}
 chmod u+x ${var}
 ./${var}
