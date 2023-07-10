@@ -3,10 +3,6 @@
 echo "Enter name file"
 read var 
 
+vim ${var}
 chmod u+x ${var}
-
-
-git add . 
-git commit -m "send"
-git push 
 
