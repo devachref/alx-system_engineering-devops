@@ -1,5 +1,5 @@
-#!/usr/bin/pup
-# Install an especific version of flask (2.1.0)
-exec { 'puppet-lint':
-  command => '/usr/bin/apt-get -y install puppet-lint -v 2.5.0',
+# Installs puppet-lint
+package { 'puppet-lint':
+  ensure   => '2.5.0',
+  provider => gem,
 }
