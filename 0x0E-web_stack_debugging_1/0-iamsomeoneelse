@@ -1,3 +1,21 @@
-#!/usr/bin/env bash
-# Runs whoami command as the user provided in argument
-sudo -u "$1" whoami
+#!/bin/bash
+
+# Check if Nginx is installed
+if ! command -v nginx &> /dev/null; then
+    echo "Nginx is not installed. Please install it first."
+    exit 1
+fi
+
+# Check if Nginx is already configured to listen on port 80
+if grep -q "listen 80;" /etc/nginx/sites-available/default; then
+    echo "Nginx is already configured to listen on port 80."
+else
+    # Update Nginx configuration to listen on port 80
+    sed -i '/listen [::]:80 default_server;/a \\tlisten 80;' /etc/nginx/sites-available/default
+
+    # Reload Nginx to apply the changes
+    service nginx reload
+
+    echo "Nginx has been configured to listen on port 80."
+fi
+
