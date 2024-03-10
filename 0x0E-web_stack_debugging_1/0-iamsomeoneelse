@@ -1,21 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# configures a server to listening on port 80 of all servers active IPv4 IPs
 
-# Check if Nginx is installed
-if ! command -v nginx &> /dev/null; then
-    echo "Nginx is not installed. Please install it first."
-    exit 1
-fi
-
-# Check if Nginx is already configured to listen on port 80
-if grep -q "listen 80;" /etc/nginx/sites-available/default; then
-    echo "Nginx is already configured to listen on port 80."
-else
-    # Update Nginx configuration to listen on port 80
-    sed -i '/listen [::]:80 default_server;/a \\tlisten 80;' /etc/nginx/sites-available/default
-
-    # Reload Nginx to apply the changes
-    service nginx reload
-
-    echo "Nginx has been configured to listen on port 80."
-fi
-
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
