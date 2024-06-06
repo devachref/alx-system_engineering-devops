@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+echo "Enter name file you want to create"
+read var
+
+touch "${var}"
+echo "#!/bin/bash" > $var
+vim $var
+chmod u+x "${var}"
+

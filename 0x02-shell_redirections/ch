@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Enter name file"
+read var 
+
+echo "#!/bin/bash" > ${var}
+vim ${var}
+chmod u+x ${var}
+

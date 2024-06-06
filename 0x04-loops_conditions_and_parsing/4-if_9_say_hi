@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Script display "Best school" x10 using while loop
+# say hi on 9th iteration
+
+i=0
+
+while [ $i -lt 10 ]
+do
+  if [ $i -eq 9 ]
+  then
+    echo "Hi"
+  fi
+  echo "Best School"
+  (( i++ ))
+done
